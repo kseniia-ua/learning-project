@@ -32,97 +32,108 @@
 
   <body>
     <div class="container">
-      <div class="row">
-        <div class="col-6">
-          <form class="search-form" id="search-form">
-            <div class="input-group">
-              <input
-                class="form-control"
-                type="text"
-                placeholder="Enter a city"
-                autocomplete="off"
-                autofocus="on"
-                id="city-input"
-              />
-              <button
-                id="button"
-                class="btn btn-outline-secondary"
-                type="search"
-              >
-                Search
-              </button>
+      <div class="weather-app">
+        <div class="row">
+          <div class="col-6">
+            <form class="search-form" id="search-form">
+              <div class="input-group">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Enter a city"
+                  autocomplete="off"
+                  autofocus="on"
+                  id="city-input"
+                />
+                <button
+                  id="button"
+                  class="btn btn-outline-secondary"
+                  type="search"
+                >
+                  Search
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="col-6">
+            <button id="current-location" class="btn-location">
+              <i class="fa fa-home"></i>
+            </button>
+          </div>
+        </div>
+        <hr class="solid" />
+
+        <div class="row temp-row">
+          <div class="col-6">
+            <h2 id="city">Kyiv</h2>
+            <h3></h3>
+            <div class="degrees">
+              <h1 id="temp">5</h1>
+              <h1 class="tempcel" id="tempcel">°C</h1>
+              <h4><a href="#" class="tempfar" id="tempfar">°F</a></h4>
+              <ul>
+                <li id="weather-desc">Mostly sunny</li>
+                <li id="humidity">Humidity: 2%</li>
+                <li id="wind">Wind: 4 mph</li>
+              </ul>
             </div>
-          </form>
-        </div>
-        <div class="col-6">
-          <button id="current-location" class="btn-location">
-            <i class="fa fa-home"></i>
-          </button>
-        </div>
-      </div>
-      <hr class="solid" />
-
-      <div class="row temp-row">
-        <div class="col-6">
-          <h2 id="city">Kyiv</h2>
-          <h3></h3>
-          <div class="degrees">
-            <h1 id="temp">5</h1>
-            <h1 class="tempcel" id="tempcel">°C</h1>
-            <h4><a href="#" class="tempfar" id="tempfar">°F</a></h4>
-            <ul>
-              <li id="weather-desc">Mostly sunny</li>
-              <li id="humidity">Humidity: 2%</li>
-              <li id="wind">Wind: 4 mph</li>
-            </ul>
           </div>
-        </div>
-        <div class="col-6">
-          <span class="sun"></span>
-        </div>
-      </div>
-
-      <div class="row cards-row">
-        <div class="card" style="width: 140px">
-          <div class="card-body">
-            <p class="card-day"><strong>Mon</strong></p>
-            <span class="small-sun"></span>
-            <p class="card-temp"><strong>12°</strong> -2°</p>
+          <div class="col-6">
+            <span class="sun"></span>
           </div>
         </div>
 
-        <div class="card" style="width: 140px">
-          <div class="card-body">
-            <p class="card-day"><strong>Tue</strong></p>
-            <span class="small-sun"></span>
-            <p class="card-temp"><strong>10°</strong> 0°</p>
+        <div class="row cards-row">
+          <div class="card" style="width: 140px">
+            <div class="card-body">
+              <p class="card-day"><strong>Mon</strong></p>
+              <span class="small-sun"></span>
+              <p class="card-temp"><strong>12°</strong> -2°</p>
+            </div>
           </div>
-        </div>
 
-        <div class="card" style="width: 140px">
-          <div class="card-body">
-            <p class="card-day"><strong>Wed</strong></p>
-            <span class="small-sun"></span>
-            <p class="card-temp"><strong>8°</strong> -2°</p>
+          <div class="card" style="width: 140px">
+            <div class="card-body">
+              <p class="card-day"><strong>Tue</strong></p>
+              <span class="small-sun"></span>
+              <p class="card-temp"><strong>10°</strong> 0°</p>
+            </div>
           </div>
-        </div>
 
-        <div class="card" style="width: 140px">
-          <div class="card-body">
-            <p class="card-day"><strong>Thu</strong></p>
-            <span class="small-sun"></span>
-            <p class="card-temp"><strong>4°</strong> -5°</p>
+          <div class="card" style="width: 140px">
+            <div class="card-body">
+              <p class="card-day"><strong>Wed</strong></p>
+              <span class="small-sun"></span>
+              <p class="card-temp"><strong>8°</strong> -2°</p>
+            </div>
           </div>
-        </div>
 
-        <div class="card" style="width: 140px">
-          <div class="card-body">
-            <p class="card-day"><strong>Fri</strong></p>
-            <span class="small-sun"></span>
-            <p class="card-temp"><strong>8°</strong> -1°</p>
+          <div class="card" style="width: 140px">
+            <div class="card-body">
+              <p class="card-day"><strong>Thu</strong></p>
+              <span class="small-sun"></span>
+              <p class="card-temp"><strong>4°</strong> -5°</p>
+            </div>
+          </div>
+
+          <div class="card" style="width: 140px">
+            <div class="card-body">
+              <p class="card-day"><strong>Fri</strong></p>
+              <span class="small-sun"></span>
+              <p class="card-temp"><strong>8°</strong> -1°</p>
+            </div>
           </div>
         </div>
       </div>
+      <small
+        ><a
+          href="https://tiny-crisp-301789.netlify.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open-source code</a
+        >
+        by Kseniia Kyrilkova</small
+      >
     </div>
     <script src="src/index.js"></script>
   </body>
