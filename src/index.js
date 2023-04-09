@@ -39,6 +39,13 @@ function showCurrentTemp(response) {
   let currentWind = document.querySelector("#wind");
   currentWind.innerHTML = `Wind: ${wind} mph`;
 
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
+
   let description = response.data.weather[0].description;
   let currentDescription = document.querySelector("#weather-desc");
   let capitalizedDescription =
@@ -79,9 +86,19 @@ function showLocationTemp(response) {
   let currentWind = document.querySelector("#wind");
   currentWind.innerHTML = `Wind: ${wind} mph`;
 
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
+
   let description = response.data.weather[0].description;
   let currentDescription = document.querySelector("#weather-desc");
   currentDescription.innerHTML = `${description}`;
+  let capitalizedDescription =
+    description.charAt(0).toUpperCase() + description.slice(1);
+  currentDescription.innerHTML = `${capitalizedDescription}`;
 }
 
 function showPosition(position) {
