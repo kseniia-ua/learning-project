@@ -27,9 +27,11 @@ document.querySelector("h3").innerHTML = `${day}, ${time}`;
 //
 
 function showCurrentTemp(response) {
-  let tempature = Math.round(response.data.main.temp);
+  let tempature = Math.round(celsiusTemperature);
   let currentTemp = document.querySelector("#temp");
   currentTemp.innerHTML = `${tempature}`;
+
+  celsiusTemperature = response.data.main.temp;
 
   let humidity = response.data.main.humidity;
   let currentHumidity = document.querySelector("#humidity");
@@ -140,29 +142,41 @@ searchForm.addEventListener("submit", search);
 function temperatureFahrenheit(event) {
   event.preventDefault();
   let currentDegrees = document.querySelector("#temp");
-  if (document.getElementById("tempfar").innerHTML === "°C") {
-    currentDegrees.innerHTML = 5;
-  } else {
-    currentDegrees.innerHTML = 41;
-  }
 
-  console.log({ nj: document.getElementById("tempcel").innerHTML });
-  if (document.getElementById("tempfar").innerHTML === "°F") {
-    let text = document.getElementById("tempcel").innerHTML;
-    document.getElementById("tempcel").innerHTML = text.replace("°C", "°F");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  currentDegrees.innerHTML = Math.round(fahrenheitTemperature);
+}
 
-    let textBack = document.getElementById("tempfar").innerHTML;
-    document.getElementById("tempfar").innerHTML = textBack.replace("°F", "°C");
-  } else {
-    let text = document.getElementById("tempcel").innerHTML;
-    document.getElementById("tempcel").innerHTML = text.replace("°F", "°C");
+function temperatureCelsius(event) {
+  event.preventDefault();
+  let currentDegrees = document.querySelector("#temp");
 
-    let textBack = document.getElementById("tempfar").innerHTML;
-    document.getElementById("tempfar").innerHTML = textBack.replace("°C", "°F");
-  }
+  currentDegrees.innerHTML = Math.round(celsiusTemperature);
 }
 
 let fahrenheit = document.querySelector("#tempfar");
 fahrenheit.addEventListener("click", temperatureFahrenheit);
+
+let celcius = document.querySelector("#tempcel");
+celcius.addEventListener("click", temperatureCelsius);
+
+let celsiusTemperature = null;
+
+//
+//
+
+if (document.getElementById("tempfar").innerHTML === "°F") {
+  let text = document.getElementById("tempcel").innerHTML;
+  document.getElementById("tempcel").innerHTML = text.replace("°F", "°C");
+
+  let textBack = document.getElementById("tempfar").innerHTML;
+  document.getElementById("tempfar").innerHTML = textBack.replace("°C", "°F");
+} else {
+  let text = document.getElementById("tempcel").innerHTML;
+  document.getElementById("tempcel").innerHTML = text.replace("°C", "°F");
+
+  let textBack = document.getElementById("tempfar").innerHTML;
+  document.getElementById("tempfar").innerHTML = textBack.replace("°F", "°C");
+}
 
 //
