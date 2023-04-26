@@ -16,15 +16,15 @@
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
+    <script
+      src="https://kit.fontawesome.com/87598db4af.js"
       crossorigin="anonymous"
-    />
-
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&display=swap"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link rel="stylesheet" href="src/style.css" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -57,7 +57,7 @@
           </div>
           <div class="col-6">
             <button id="current-location" class="btn-location">
-              <i class="fa fa-home"></i>
+              <i class="fa-solid fa-location-dot"></i>
             </button>
           </div>
         </div>
@@ -65,10 +65,10 @@
 
         <div class="row temp-row">
           <div class="col-7">
-            <h2 id="city">Kyiv</h2>
+            <h2 id="city"></h2>
             <h3></h3>
             <div class="degrees">
-              <h1 id="temp">5</h1>
+              <h1 id="temp"></h1>
               <h1 class="tempcel" id="tempcel">°C</h1>
               <h4><a href="#" class="tempfar" id="tempfar">°F</a></h4>
               <ul>
@@ -78,13 +78,8 @@
               </ul>
             </div>
           </div>
-          <div class="col-5">
-            <img
-              src="http://openweathermap.org/img/wn/10d@2x.png"
-              alt="Clear"
-              id="icon"
-              class="sun"
-            />
+          <div class="col-5 big-icon">
+            <img src="" alt="Clear" id="big-icon" class="main-icon" />
           </div>
         </div>
 

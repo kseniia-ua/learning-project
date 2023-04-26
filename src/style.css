@@ -1,31 +1,65 @@
+body {
+  background: #f9faff;
+  font-family: "Be Vietnam Pro", sans-serif;
+  color: #0f2761;
+}
+
 .container {
   max-width: 850px;
 }
 .weather-app {
   margin-top: 60px;
   margin-bottom: 20px;
-  border: 1px solid #6c757d;
-  border-radius: 10px;
+  border: 0.5px solid #c9d3e2;
+  border-radius: 15px;
   padding: 20px;
+  background: radial-gradient(
+    60.77% 99.98% at 50% 50%,
+    rgba(241, 242, 251, 0) 15.63%,
+    #f1f2fb 100%
+  );
 }
 
 .btn-outline-secondary {
   --bs-btn-color: #ffffff;
-  --bs-btn-bg: #6c757d;
-  --bs-btn-hover-bg: #565e64;
+  --bs-btn-bg: #0688ff;
+  --bs-btn-hover-bg: #057ae6;
+  --bs-btn-border-color: none;
+  font-size: 14px;
+}
+
+.form-control {
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 0px 25px #ecefff;
+  border: none;
+}
+
+.form-control:focus {
+  color: var(--bs-body-color);
+  background-color: var(--bs-form-control-bg);
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0px 0px 15px rgba(6, 136, 255, 0.25);
 }
 
 .btn-location {
   float: right;
-  font-size: 18px;
+  font-size: 14px;
   padding: 5px 10px;
   color: white;
-  background-color: #6c757d;
+  background: #0688ff;
+  width: 35px;
+  height: 35px;
   border-radius: 5px;
   border-style: none;
 }
+.btn-location:hover {
+  background: #057ae6;
+}
 
 .solid {
+  border: 0.5px solid #c9d3e2;
   margin: 20px 0;
 }
 
@@ -55,11 +89,11 @@
 }
 .tempfar {
   text-decoration: underline;
-  color: #000000;
+  color: #0f2761;
 }
 .tempfar:hover {
   text-decoration: underline;
-  color: #0d34e2;
+  color: #0688ff;
 }
 h2 {
   font-weight: 700;
@@ -70,12 +104,12 @@ h3 {
   font-size: 22px;
 }
 
-.sun {
+.main-icon {
   position: relative;
   display: block;
   margin: 0 auto;
   margin-top: 30px;
-  min-width: 200px;
+  max-width: 200px;
 }
 
 .cards-row {
@@ -84,8 +118,11 @@ h3 {
 
 .card {
   text-align: center;
-  background-color: #f3f3f3;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 0px 25px #ecefff,
+    inset 0px 0px 1px 1px rgba(255, 255, 255, 0.5);
   border-style: none;
+  border-radius: 5px;
   margin: 10px;
 }
 

@@ -44,11 +44,8 @@ function showCurrentTemp(response) {
   let currentWind = document.querySelector("#wind");
   currentWind.innerHTML = `Wind: ${wind} mph`;
 
-  let iconElement = document.querySelector("#icon");
-  iconElement.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
+  let iconElement = document.querySelector("#big-icon");
+  iconElement.setAttribute("src", `media/${response.data.weather[0].icon}.png`);
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
   let description = response.data.weather[0].description;
@@ -117,7 +114,6 @@ function showPosition(position) {
     .get(`${apiUrl}lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`)
     .then(showLocationTemp);
 }
-navigator.geolocation.getCurrentPosition(showPosition);
 
 function getCurrentLocation() {
   navigator.geolocation.getCurrentPosition(showPosition);
