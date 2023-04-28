@@ -25,6 +25,35 @@ let time = `${hour}:${minute}`;
 
 document.querySelector("h3").innerHTML = `${day}, ${time}`;
 //
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Fri", "Sat", "Sun", "Mon", "Tue"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+  
+          <div class="col-2 weather-forecast-card">
+            <div class="weather-forecast-date">${day}</div>
+            <img class="small-icon" src="media/01d.png" alt="" width="45" />
+            <div class="weather-forecast-temperatures">
+              <span class="weather-forecast-temperatures-max">18°</span>
+              <span class="weather-forecast-temperatures-min">12°</span>
+            </div>
+          </div>
+        
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+//
+
 let celsiusTemperature = null;
 
 function showCurrentTemp(response) {
@@ -158,8 +187,20 @@ function temperatureFahrenheit(event) {
 let fahrenheit = document.querySelector("#tempfar");
 fahrenheit.addEventListener("click", temperatureFahrenheit);
 
+displayForecast();
+
 // let celcius = document.querySelector("#tempcel");
 // celcius.addEventListener("click", temperatureCelsius);
 
 //
 //
+
+//  <div class="row cards-row">
+//<div class="card" style="width: 140px">
+// <div class="card-body">
+//  <p class="card-day"><strong>Mon</strong></p>
+//  <span class="small-sun"></span>
+//  <p class="card-temp"><strong>12°</strong> -2°</p>
+// </div>
+// </div>
+// </div>
