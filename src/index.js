@@ -26,26 +26,46 @@ let time = `${hour}:${minute}`;
 document.querySelector("h3").innerHTML = `${day}, ${time}`;
 //
 
-function displayForecast() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Fri", "Sat", "Sun", "Mon", "Tue"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
   
           <div class="col-2 weather-forecast-card">
-            <div class="weather-forecast-date">${day}</div>
-            <img class="small-icon" src="media/01d.png" alt="" width="45" />
+            <div class="weather-forecast-date">${formatDay(
+              forecastDay.dt
+            )}</div>
+         
+            <img class="small-icon" src="media/${
+              forecastDay.weather[0].icon
+            }.png" alt="" width="45" />
+            
             <div class="weather-forecast-temperatures">
-              <span class="weather-forecast-temperatures-max">18°</span>
-              <span class="weather-forecast-temperatures-min">12°</span>
+              <span class="weather-forecast-temperatures-max">${Math.round(
+                forecastDay.temp.max
+              )}°</span>
+              <span class="weather-forecast-temperatures-min">${Math.round(
+                forecastDay.temp.min
+              )}°</span>
             </div>
           </div>
-        
-  `;
+      `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -58,7 +78,7 @@ let celsiusTemperature = null;
 
 function getForecast(coordinates) {
   console.log(coordinates);
-  let apiKey = "9d256541562f8d22893f524e36f1e610";
+  let apiKey = "2718952144ed077c12e7c160fb6fc351";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   console.log(apiUrl);
   axios.get(apiUrl).then(displayForecast);
@@ -196,8 +216,6 @@ function temperatureFahrenheit(event) {
 
 let fahrenheit = document.querySelector("#tempfar");
 fahrenheit.addEventListener("click", temperatureFahrenheit);
-
-displayForecast();
 
 // let celcius = document.querySelector("#tempcel");
 // celcius.addEventListener("click", temperatureCelsius);
