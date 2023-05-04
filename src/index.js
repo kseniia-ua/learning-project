@@ -1,5 +1,3 @@
-// 1
-
 let now = new Date();
 
 let days = [
@@ -24,7 +22,6 @@ if (minute < 10) {
 let time = `${hour}:${minute}`;
 
 document.querySelector("h3").innerHTML = `${day}, ${time}`;
-//
 
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
@@ -71,8 +68,6 @@ function displayForecast(response) {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-
-//
 
 let celsiusTemperature = null;
 
@@ -133,8 +128,6 @@ function searchInput(event) {
 let citySearch = document.querySelector("#search-form");
 citySearch.addEventListener("submit", searchInput);
 
-//
-
 function showPosition(position) {
   console.log(position);
   let lat = position.coords.latitude;
@@ -164,15 +157,10 @@ function search(event) {
 }
 
 let searchForm = document.querySelector("#search-form");
-// searchForm.addEventListener("submit", search);
-
-// 3
-
-//
 
 function temperatureFahrenheit(event) {
   event.preventDefault();
-  // if(document.getElementById("tempfar").innerHTML === "°F") return temperatureCelsius(event)
+
   let currentDegrees = document.querySelector("#temp");
 
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
@@ -189,8 +177,5 @@ function temperatureFahrenheit(event) {
 
 let fahrenheit = document.querySelector("#tempfar");
 fahrenheit.addEventListener("click", temperatureFahrenheit);
-
-// let celcius = document.querySelector("#tempcel");
-// celcius.addEventListener("click", temperatureCelsius);
 
 searchCity("Kyiv");
