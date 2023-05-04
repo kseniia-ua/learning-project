@@ -86,9 +86,9 @@ function getForecast(coordinates) {
 
 function showCurrentTemp(response) {
   celsiusTemperature = Math.round(response.data.main.temp);
-  let tempature = Math.round(celsiusTemperature);
+  let temperature = Math.round(celsiusTemperature);
   let currentTemp = document.querySelector("#temp");
-  currentTemp.innerHTML = `${tempature}`;
+  currentTemp.innerHTML = `${temperature}`;
 
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.name;
@@ -114,53 +114,26 @@ function showCurrentTemp(response) {
   getForecast(response.data.coord);
 }
 
+function searchCity(city) {
+  let apiKey = "9d256541562f8d22893f524e36f1e610";
+  let apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
+  let units = "metric";
+  axios
+    .get(`${apiUrl}q=${city}&appid=${apiKey}&units=${units}`)
+    .then(showCurrentTemp);
+}
+
 function searchInput(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#city-input");
   let cityName = document.querySelector("#city");
   cityName.innerHTML = `${cityInput.value}`;
-  let apiKey = "9d256541562f8d22893f524e36f1e610";
-  let apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
-  let units = "metric";
-  axios
-    .get(`${apiUrl}q=${cityInput.value}&appid=${apiKey}&units=${units}`)
-    .then(showCurrentTemp);
+  searchCity(cityInput.value);
 }
 let citySearch = document.querySelector("#search-form");
 citySearch.addEventListener("submit", searchInput);
 
 //
-function showLocationTemp(response) {
-  let city = response.data.name;
-  let currentCity = document.querySelector("#city");
-  currentCity.innerHTML = `${city}`;
-
-  let tempature = Math.round(response.data.main.temp);
-  let currentTemp = document.querySelector("#temp");
-  currentTemp.innerHTML = `${tempature}`;
-
-  let humidity = response.data.main.humidity;
-  let currentHumidity = document.querySelector("#humidity");
-  currentHumidity.innerHTML = `Humidity: ${humidity}%`;
-
-  let wind = Math.round(response.data.wind.speed);
-  let currentWind = document.querySelector("#wind");
-  currentWind.innerHTML = `Wind: ${wind} mph`;
-
-  let iconElement = document.querySelector("#icon");
-  iconElement.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-  iconElement.setAttribute("alt", response.data.weather[0].description);
-
-  let description = response.data.weather[0].description;
-  let currentDescription = document.querySelector("#weather-desc");
-  currentDescription.innerHTML = `${description}`;
-  let capitalizedDescription =
-    description.charAt(0).toUpperCase() + description.slice(1);
-  currentDescription.innerHTML = `${capitalizedDescription}`;
-}
 
 function showPosition(position) {
   console.log(position);
@@ -171,7 +144,7 @@ function showPosition(position) {
   let apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
   axios
     .get(`${apiUrl}lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`)
-    .then(showLocationTemp);
+    .then(showCurrentTemp);
 }
 
 function getCurrentLocation() {
@@ -220,15 +193,4 @@ fahrenheit.addEventListener("click", temperatureFahrenheit);
 // let celcius = document.querySelector("#tempcel");
 // celcius.addEventListener("click", temperatureCelsius);
 
-//
-//
-
-//  <div class="row cards-row">
-//<div class="card" style="width: 140px">
-// <div class="card-body">
-//  <p class="card-day"><strong>Mon</strong></p>
-//  <span class="small-sun"></span>
-//  <p class="card-temp"><strong>12°</strong> -2°</p>
-// </div>
-// </div>
-// </div>
+searchCity("Kyiv");
